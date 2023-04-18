@@ -3,58 +3,34 @@
  * Created by PhpStorm
  * User: Serwinle
  * Date: 2023/4/14
- * Time: 14:34
+ * Time: 14:44
  */
 
 namespace Kzeal\SpecailCharTool\Imp;
 
-use Kzeal\SpecailCharTool\InterfaceSpecailCharCheck;
 
-class Check implements InterfaceSpecailCharCheck
+use Kzeal\SpecailCharTool\AbstractSpecailCharCheck;
+
+class Check extends AbstractSpecailCharCheck
 {
-    /**
-     * @var ContainerInterface
-     */
-    private $container;
 
-    /**
-     * @var ConfigInterface
-     */
-    private $config;
-
-    /**
-     * @var string
-     */
-    private $configPrefix = 'specail_char_rule';
-
-    public function __construct(ContainerInterface $container)
+    function setStractCheckConfig($rule_name = 'default')
     {
-        $this->container = $container;
-        $this->config = $this->container->get(ConfigInterface::class);
-    }
-
-    function setStractCheckConfig($config = 'default')
-    {
-        $this->config = $this->config->get($this->configPrefix.$config);
+        $this->container->setStractCheckConfig($rule_name);
     }
 
     function makeRule()
     {
-    }
-
-    function setRule($rule_name = 'default')
-    {
-
+        $this->container->makeRule();
     }
 
     function addRule($rule_name = 'default')
     {
-
+        $this->container->makeRule($rule_name);
     }
 
     function resetRule($rule_name = 'default')
     {
-
+        $this->container->resetRule($rule_name);
     }
-
 }

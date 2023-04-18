@@ -9,7 +9,7 @@
 namespace Kzeal\SpecailCharTool;
 
 
-interface InterfaceSpecailCharHandleLogic
+interface InterfaceSpecailCharLogic
 {
     function handle($param);
 }

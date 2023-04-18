@@ -11,9 +11,8 @@ namespace Kzeal\SpecailCharTool;
 
 interface InterfaceSpecailCharCheck
 {
-    function setStractCheckConfig($config = 'default');
+    function setStractCheckConfig($rule_name = 'default');
     function makeRule();
-    function setRule($rule_name = 'default');
     function addRule($rule_name = 'default');
     function resetRule($rule_name = 'default');
 }

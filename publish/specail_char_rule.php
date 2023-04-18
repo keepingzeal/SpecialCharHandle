@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 
 return [
+    'check_num' =>  2, // 默认检测数量
     'default'   =>   [
-        'check_num' =>  2, // 默认检测数量
         'rule'  =>  [
             'normal_arr'    =>  [
                 [0,9]

@@ -12,7 +12,7 @@ namespace Kzeal\SpecailCharTool;
  * Class AbstractSpecailCharMsg
  * @package Kzeal\SpecailCharTool
  */
-Abstract class AbstractSpecailCharMsg
+Abstract class AbstractSpecailCharMsg implements InterfaceSpecailCharMsg
 {
     public InterfaceSpecailCharMsg $container;
     public function __construct(InterfaceSpecailCharMsg $container)

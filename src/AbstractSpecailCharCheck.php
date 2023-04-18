@@ -12,7 +12,7 @@ namespace Kzeal\SpecailCharTool;
  * Class AbstractSpecailCharCheck
  * @package Kzeal\SpecailCharTool
  */
-Abstract class AbstractSpecailCharCheck
+Abstract class AbstractSpecailCharCheck implements InterfaceSpecailCharCheck
 {
     public InterfaceSpecailCharCheck $container;
     public function __construct(InterfaceSpecailCharCheck $container)

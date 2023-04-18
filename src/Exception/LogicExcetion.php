@@ -9,7 +9,7 @@
 namespace Kzeal\SpecailCharTool\Exception;
 
 
-class HandleLogicExcetion extends \RuntimeException
+class LogicExcetion extends \RuntimeException
 {
 
 }

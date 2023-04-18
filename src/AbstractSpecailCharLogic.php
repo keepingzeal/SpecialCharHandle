@@ -12,10 +12,10 @@ namespace Kzeal\SpecailCharTool;
  * Class AbstractSpecailCharHandleLogic
  * @package Kzeal\SpecailCharTool
  */
-Abstract class AbstractSpecailCharHandleLogic
+Abstract class AbstractSpecailCharLogic implements InterfaceSpecailCharLogic
 {
-    public InterfaceSpecailCharHandleLogic $container;
-    public function __construct(InterfaceSpecailCharHandleLogic $container)
+    public InterfaceSpecailCharLogic $container;
+    public function __construct(InterfaceSpecailCharLogic $container)
     {
         $this->container = $container;
     }

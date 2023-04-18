@@ -45,7 +45,7 @@ class SpecailCharUtil
     {
         $str = '';
         foreach ($arr as $map) {
-            $str = self::retPackChar(self::ToCode($map[0])).'-'.self::retPackChar(self::ToCode($map[1]));
+            $str .= self::retPackChar(self::ToCode($map[0])).'-'.self::retPackChar(self::ToCode($map[1]));
         }
         return $str;
     }
@@ -54,7 +54,7 @@ class SpecailCharUtil
     {
         $str = '';
         foreach ($arr as $map) {
-            $str = self::retPackChar(self::ToCode($map));
+            $str .= self::retPackChar(self::ToCode($map));
         }
         return $str;
     }
@@ -63,7 +63,7 @@ class SpecailCharUtil
     {
         $str = '';
         foreach ($arr as $map) {
-            $str = self::retPackChar(self::ToUCode($map[0])).'-'.self::retPackChar(self::ToUCode($map[1]));
+            $str .= self::retPackChar(self::ToUCode($map[0])).'-'.self::retPackChar(self::ToUCode($map[1]));
         }
         return $str;
     }
@@ -72,19 +72,37 @@ class SpecailCharUtil
     {
         $str = '';
         foreach ($arr as $map) {
-            $str = self::retPackChar(self::ToUCode($map));
+            $str .= self::retPackChar(self::ToUCode($map));
         }
         return $str;
     }
 
-    static function isSpecailRuleChar($str)
+    static function packNormalArrRule($arr)
+    {
+        $str = '';
+        foreach ($arr as $map) {
+            $str .= $map[0] . '-' . $map[1];
+        }
+        return $str;
+    }
+
+    static function packNormalRule($arr)
+    {
+        $str = '';
+        foreach ($arr as $map) {
+            $str .= $map;
+        }
+        return $str;
+    }
+
+    static function isSpecailRule($str)
     {
         if (strrpos($str, 'spectail')) {
             return true;
         }
     }
 
-    static function isSpecailRuleArr($str)
+    static function isArrRule($str)
     {
         if (strrpos($str, 'arr')) {
             return true;
@@ -95,5 +113,6 @@ class SpecailCharUtil
     {
         return '\\x{'.$str.'}';
     }
+
 
 }
