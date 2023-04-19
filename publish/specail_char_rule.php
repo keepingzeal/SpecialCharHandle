@@ -13,7 +13,7 @@ return [
             'normal' => [
 
             ],
-            'specail_arr_char'    =>  [
+            'spectail_arr_char'    =>  [
                 ['12800', '13055'],
                 /*['0370', '03FF'],
                 ['0E00', '0E7F'],
@@ -28,7 +28,7 @@ return [
                 ['2160', '216B'],
                 ['1D400', '1D7FF'],*/
             ],
-            'specail_char'   =>  [
+            'spectail_char'   =>  [
                 '127328',
                 /*'1F180',
                 'F9B2',
