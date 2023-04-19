@@ -129,8 +129,7 @@ class Check implements InterfaceSpecailCharCheck
                 return false;
             }
         }
-
-
+        return true;
     }
 
     function clean($content, &$result)
