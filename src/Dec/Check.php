@@ -8,8 +8,12 @@
 
 namespace Kzeal\SpecailCharTool\Dec;
 
+use Hyperf\Contract\ConfigInterface;
 use Kzeal\SpecailCharTool\InterfaceSpecailCharCheck;
 use Kzeal\SpecailCharTool\Util\SpecailCharUtil;
+use Psr\Container\ContainerInterface;
+
+
 
 class Check implements InterfaceSpecailCharCheck
 {
@@ -27,6 +31,11 @@ class Check implements InterfaceSpecailCharCheck
      * @var string
      */
     private $str_rule;
+
+    /**
+     * @var array
+     */
+    private $arr_rule;
 
     /**
      * @var string
@@ -47,18 +56,19 @@ class Check implements InterfaceSpecailCharCheck
     {
         $this->container = $container;
         $this->config = $this->container->get(ConfigInterface::class);
+        var_dump($this->config);
         $this->loadConfig();
         $this->makeRule();
     }
 
     function setStractCheckConfig($rule_name = 'default')
     {
-        $this->config = $this->config->get($this->configPrefix . $rule_name);
+        $this->arr_rule = $this->config->get($this->configPrefix .'.'. $rule_name);
     }
 
     function setCheckLength()
     {
-        $this->str_length = $this->config->get($this->configPrefix . 'check_num');
+        $this->str_length = $this->config->get($this->configPrefix . '.check_num');
     }
 
     function makeRule()
@@ -69,7 +79,7 @@ class Check implements InterfaceSpecailCharCheck
     function addRule($rule_name = 'default')
     {
         if ($rule_name == 'default') {
-            foreach ($this->config['rule'] as $key => $map) {
+            foreach ($this->arr_rule['rule'] as $key => $map) {
                 if (SpecailCharUtil::isArrRule($key)) {
                     if (SpecailCharUtil::isSpecailRule($key)) {
                         $this->str_rule .= SpecailCharUtil::packDefaultArr($map);
@@ -86,7 +96,7 @@ class Check implements InterfaceSpecailCharCheck
             }
         } else {
             $this->setStractCheckConfig($rule_name);
-            foreach ($this->config['rule'] as $key => $map) {
+            foreach ($this->arr_rule['rule'] as $key => $map) {
                 if (SpecailCharUtil::isArrRule($key)) {
                     $this->str_rule .= SpecailCharUtil::packRuleArr($map);
                 } else {
