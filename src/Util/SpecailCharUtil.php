@@ -98,7 +98,7 @@ class SpecailCharUtil
     static function isSpecailRule($str)
     {
         if (strrpos($str, 'spectail')) {
-            return true;
+            return true; 
         }
     }
 
