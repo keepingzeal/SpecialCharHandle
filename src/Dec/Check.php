@@ -56,7 +56,6 @@ class Check implements InterfaceSpecailCharCheck
     {
         $this->container = $container;
         $this->config = $this->container->get(ConfigInterface::class);
-        var_dump($this->config);
         $this->loadConfig();
         $this->makeRule();
     }
