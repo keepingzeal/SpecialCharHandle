@@ -60,7 +60,6 @@ return [
     'add_config'   =>   [
         'rule'  =>  [
             'normal_arr'    =>  [
-                [0,9]
             ],
             'normal' => [
 
