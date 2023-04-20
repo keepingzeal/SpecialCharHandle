@@ -57,4 +57,21 @@ return [
             ],
         ]
     ],
+    'add_config'   =>   [
+        'rule'  =>  [
+            'normal_arr'    =>  [
+                [0,9]
+            ],
+            'normal' => [
+
+            ],
+            'spectail_arr_char'    =>  [
+            ],
+            'spectail_char'   =>  [
+            ],
+        ]
+    ],
+    'load_config'   =>  [
+        'default', 'add_config'
+    ]
 ];

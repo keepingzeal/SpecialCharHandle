@@ -72,11 +72,14 @@ class Check implements InterfaceSpecailCharCheck
 
     function makeRule()
     {
-        $this->addRule();
+        foreach ($this->config->get($this->configPrefix . '.load_config') as $map) {
+            $this->addRule($map);
+        }
     }
 
     function addRule($rule_name = 'default')
     {
+        $this->setStractCheckConfig($rule_name);
         if ($rule_name == 'default') {
             foreach ($this->arr_rule['rule'] as $key => $map) {
                 if (SpecailCharUtil::isArrRule($key)) {
@@ -94,7 +97,6 @@ class Check implements InterfaceSpecailCharCheck
                 }
             }
         } else {
-            $this->setStractCheckConfig($rule_name);
             foreach ($this->arr_rule['rule'] as $key => $map) {
                 if (SpecailCharUtil::isArrRule($key)) {
                     $this->str_rule .= SpecailCharUtil::packRuleArr($map);
@@ -116,7 +118,6 @@ class Check implements InterfaceSpecailCharCheck
 
     function loadConfig($rule_name = 'default')
     {
-        $this->setStractCheckConfig($rule_name);
         $this->setCheckLength();
     }
 
