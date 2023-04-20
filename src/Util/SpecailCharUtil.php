@@ -97,14 +97,14 @@ class SpecailCharUtil
 
     static function isSpecailRule($str)
     {
-        if (strrpos($str, 'spectail')) {
-            return true; 
+        if (strrpos($str, 'spectail') !== false) {
+            return true;
         }
     }
 
     static function isArrRule($str)
     {
-        if (strrpos($str, 'arr')) {
+        if (strrpos($str, 'arr') !== false) {
             return true;
         }
     }
