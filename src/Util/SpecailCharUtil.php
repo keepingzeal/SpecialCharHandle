@@ -111,7 +111,7 @@ class SpecailCharUtil
 
     static function retPackChar($str)
     {
-        return '\\x{'.$str.'}';
+        return '\\x{'.strtoupper($str).'}';
     }
 
 
