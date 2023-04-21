@@ -14,5 +14,4 @@ interface InterfaceSpecailCharCheck
     function setStractCheckConfig($rule_name = 'default');
     function makeRule();
     function addRule($rule_name = 'default');
-    function resetRule($rule_name = 'default');
 }

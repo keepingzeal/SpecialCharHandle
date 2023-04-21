@@ -11,6 +11,6 @@ namespace Kzeal\SpecailCharTool;
 
 interface InterfaceSpecailCharMsg
 {
-    function getPlatformConfig($platform = 'default');
-    function send($param);
+    function setPlatformConfig($platform = 'default');
+    function send();
 }

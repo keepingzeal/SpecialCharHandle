@@ -5,6 +5,23 @@ declare(strict_types=1)
 
 return [
     'check_num' =>  2, // 默认检测数量
+    'platform'  =>  [
+        // 飞书
+        'default'   =>  [
+            'msg_struct' => [
+                'msg_type'  =>  'text',
+                'content'   =>  [
+                    'text'  =>  ''  // 违规内容详情
+                ]
+            ],
+            'config' => [
+                'url'   =>  '' // 飞书机器人地址
+            ]
+        ],
+    ],
+    'handle'    =>  [
+
+    ],
     'default'   =>   [
         'rule'  =>  [
             'normal_arr'    =>  [
@@ -59,14 +76,18 @@ return [
     ],
     'add_config'   =>   [
         'rule'  =>  [
+            // 正常[A,B]
             'normal_arr'    =>  [
+                // ['A','B']
             ],
             'normal' => [
-
+                // 'A'
             ],
             'spectail_arr_char'    =>  [
+                // ['A', 'B'] AB为特殊字符
             ],
             'spectail_char'   =>  [
+                // 'A' A为特殊字符
             ],
         ]
     ],

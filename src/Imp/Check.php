@@ -29,8 +29,4 @@ class Check extends AbstractSpecailCharCheck
         $this->container->makeRule($rule_name);
     }
 
-    function resetRule($rule_name = 'default')
-    {
-        $this->container->resetRule($rule_name);
-    }
 }

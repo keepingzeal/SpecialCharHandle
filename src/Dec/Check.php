@@ -8,9 +8,9 @@
 
 namespace Kzeal\SpecailCharTool\Dec;
 
-use Hyperf\Contract\ConfigInterface;
 use Kzeal\SpecailCharTool\InterfaceSpecailCharCheck;
 use Kzeal\SpecailCharTool\Util\SpecailCharUtil;
+use Hyperf\Contract\ConfigInterface;
 use Psr\Container\ContainerInterface;
 
 
@@ -50,7 +50,7 @@ class Check implements InterfaceSpecailCharCheck
     /**
      * @var string
      */
-    private $configPrefix = 'specail_char_rule';
+    private $config_prefix = 'specail_char_rule';
 
     public function __construct(ContainerInterface $container)
     {
@@ -62,17 +62,17 @@ class Check implements InterfaceSpecailCharCheck
 
     function setStractCheckConfig($rule_name = 'default')
     {
-        $this->arr_rule = $this->config->get($this->configPrefix .'.'. $rule_name);
+        $this->arr_rule = $this->config->get($this->config_prefix .'.'. $rule_name);
     }
 
     function setCheckLength()
     {
-        $this->str_length = $this->config->get($this->configPrefix . '.check_num');
+        $this->str_length = $this->config->get($this->config_prefix . '.check_num');
     }
 
     function makeRule()
     {
-        foreach ($this->config->get($this->configPrefix . '.load_config') as $map) {
+        foreach ($this->config->get($this->config_prefix . '.load_config') as $map) {
             $this->addRule($map);
         }
     }
@@ -82,6 +82,9 @@ class Check implements InterfaceSpecailCharCheck
         $this->setStractCheckConfig($rule_name);
         if ($rule_name == 'default') {
             foreach ($this->arr_rule['rule'] as $key => $map) {
+                if (empty($map)) {
+                    continue;
+                }
                 if (SpecailCharUtil::isArrRule($key)) {
                     if (SpecailCharUtil::isSpecailRule($key)) {
                         $this->str_rule .= SpecailCharUtil::packDefaultArr($map);
@@ -98,21 +101,15 @@ class Check implements InterfaceSpecailCharCheck
             }
         } else {
             foreach ($this->arr_rule['rule'] as $key => $map) {
+                if (empty($map)) {
+                    continue;
+                }
                 if (SpecailCharUtil::isArrRule($key)) {
                     $this->str_rule .= SpecailCharUtil::packRuleArr($map);
                 } else {
                     $this->str_rule .= SpecailCharUtil::packRule($map);
                 }
             }
-        }
-    }
-
-    function resetRule($rule_name = 'default')
-    {
-        if ($rule_name == 'default') {
-            $this->addRule();
-        } else {
-            $this->addRule($rule_name);
         }
     }
 
